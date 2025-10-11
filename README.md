@@ -224,9 +224,9 @@ MIT License
 
 ## 👨‍💻 Contact
 
-**Kaggle:** [@YOUR_USERNAME](https://www.kaggle.com/serhiikravchenko2009)
-**GitHub:** [@YOUR_USERNAME](https://github.com/Serhii2009)
-**LinkedIn:** [Your Profile](https://www.linkedin.com/in/serhii-kravchenko-b941272a6/)
+**Kaggle:** [@serhiikravchenko2009](https://www.kaggle.com/serhiikravchenko2009)
+**GitHub:** [@Serhii2009](https://github.com/Serhii2009)
+**LinkedIn:** [serhii-kravchenko-b941272a6](https://www.linkedin.com/in/serhii-kravchenko-b941272a6/)
 
 ---
 
