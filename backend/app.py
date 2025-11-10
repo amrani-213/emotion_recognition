@@ -2,28 +2,79 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import tensorflow as tf
 from tensorflow import keras
+from tensorflow.keras import backend as K
 import numpy as np
 import cv2
 import base64
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for React frontend
+CORS(app)
 
-# Load the trained emotion detection model
-MODEL_PATH = 'best_emotion_model.h5'
+# ==================== CUSTOM FOCAL LOSS ====================
+class FocalLoss(keras.losses.Loss):
+    def __init__(self, alpha=0.25, gamma=2.0, name='focal_loss', reduction='sum_over_batch_size'):
+        super().__init__(name=name, reduction=reduction)
+        self.alpha = alpha
+        self.gamma = gamma
+    
+    def call(self, y_true, y_pred):
+        y_pred = K.clip(y_pred, K.epsilon(), 1 - K.epsilon())
+        ce = -y_true * K.log(y_pred)
+        weight = self.alpha * y_true * K.pow(1 - y_pred, self.gamma)
+        focal_loss = weight * ce
+        return K.sum(focal_loss, axis=-1)
+    
+    def get_config(self):
+        config = super().get_config()
+        config.update({
+            'alpha': self.alpha,
+            'gamma': self.gamma
+        })
+        return config
+    
+    @classmethod
+    def from_config(cls, config):
+        return cls(**config)
 
-try:
-    model = keras.models.load_model(MODEL_PATH)
-    print("✓ Model loaded successfully")
-    print(f"✓ Model input shape: {model.input_shape}")
-    print(f"✓ Model output shape: {model.output_shape}")
-except Exception as e:
-    print(f"✗ Error loading model: {e}")
-    model = None
+# ==================== MODEL LOADING ====================
+# Try multiple model file names
+MODEL_PATHS = ['best_emotion_optimized.h5']
+model = None
+MODEL_PATH = None
+
+for path in MODEL_PATHS:
+    if os.path.exists(path):
+        try:
+            print(f"Attempting to load model from: {path}")
+            
+            # Load model with custom objects
+            model = keras.models.load_model(
+                path,
+                custom_objects={'FocalLoss': FocalLoss},
+                compile=True
+            )
+            
+            MODEL_PATH = path
+            print("✓ Model loaded successfully")
+            print(f"✓ Model path: {path}")
+            print(f"✓ Model input shape: {model.input_shape}")
+            print(f"✓ Model output shape: {model.output_shape}")
+            break
+            
+        except Exception as e:
+            print(f"✗ Failed to load {path}: {e}")
+            continue
+
+if model is None:
+    print("⚠️  WARNING: No model could be loaded!")
+    print("Available files in directory:")
+    for file in os.listdir('.'):
+        if file.endswith(('.h5', '.keras')):
+            print(f"  - {file}")
 
 # Emotion labels (must match training order)
-EMOTION_LABELS = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
+EMOTION_LABELS = ['Angry', 'Disgust', 'Fear', 'Happy', 'Neutral', 'Sad', 'Surprise']
 
 def preprocess_image(image_data):
     """
@@ -76,8 +127,10 @@ def home():
         'status': 'online',
         'message': 'Emotion Detection API is running',
         'model_loaded': model is not None,
+        'model_path': MODEL_PATH,
         'endpoints': {
-            '/predict': 'POST - Predict emotion from base64 image'
+            '/predict': 'POST - Predict emotion from base64 image',
+            '/health': 'GET - Detailed health check'
         }
     })
 
@@ -92,7 +145,7 @@ def predict_emotion():
     # Check if model is loaded
     if model is None:
         return jsonify({
-            'error': 'Model not loaded',
+            'error': 'Model not loaded. Please ensure model file exists.',
             'emotion': 'Neutral',
             'confidence': 0.0
         }), 500
@@ -144,6 +197,8 @@ def predict_emotion():
     
     except Exception as e:
         print(f"Error in prediction: {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({
             'error': str(e),
             'emotion': 'Neutral',
@@ -154,23 +209,30 @@ def predict_emotion():
 def health():
     """Detailed health check"""
     return jsonify({
-        'status': 'healthy',
+        'status': 'healthy' if model is not None else 'unhealthy',
         'model_loaded': model is not None,
         'model_path': MODEL_PATH,
-        'emotions': EMOTION_LABELS
+        'emotions': EMOTION_LABELS,
+        'input_shape': str(model.input_shape) if model else None,
+        'output_shape': str(model.output_shape) if model else None
     })
 
 if __name__ == '__main__':
-    # Check if model file exists
-    if not os.path.exists(MODEL_PATH):
-        print(f"⚠️  Warning: Model file '{MODEL_PATH}' not found!")
-        print("Please place 'emotion_model.h5' in the backend directory.")
+    # Check if any model file exists
+    found_models = [p for p in MODEL_PATHS if os.path.exists(p)]
+    
+    if not found_models:
+        print("⚠️  Warning: No model files found!")
+        print(f"Looking for: {', '.join(MODEL_PATHS)}")
+        print("Please place your trained model (.h5 file) in the backend directory.")
     
     print("\n" + "="*60)
     print("🚀 EMOTION DETECTION API SERVER")
     print("="*60)
     print(f"Server running on: http://localhost:5000")
     print(f"Model loaded: {model is not None}")
+    if MODEL_PATH:
+        print(f"Model file: {MODEL_PATH}")
     print(f"Emotions: {', '.join(EMOTION_LABELS)}")
     print("="*60 + "\n")
     
