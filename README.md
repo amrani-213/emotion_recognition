@@ -697,7 +697,7 @@ F1-score evolution for each emotion class
 </td>
 </tr>
 </table>
-</div>
+
 ---
 
 ## 🔮 Future Work
