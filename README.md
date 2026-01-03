@@ -467,31 +467,6 @@ Early Stopping: Patience = 5 epochs
 </td>
 <td width="50%">
 
-### ## 🚀 Streamlit App
-
-<div align="center">
-
-### 💻 Interactive Web Application
-
-</div>
-
-<table>
-<tr>
-<td width="50%">
-
-### ✨ Features
-
-- 📷 **Real-time webcam detection**
-- 🖼️ **Image upload mode**
-- 🎚️ **Confidence threshold slider**
-- 📊 **Live probability charts**
-- 🎨 **Color-coded emotions**
-- 🔍 **MediaPipe face detection**
-- ⚡ **Fast inference (<50ms)**
-
-</td>
-<td width="50%">
-
 ### 🚀 Quick Launch
 
 ```bash
@@ -509,17 +484,15 @@ streamlit run app/emotion_app.py
 </tr>
 </table>
 
-### 🎬 Live Demo
+### 📸 Demo Screenshot
 
 <div align="center">
 
-![Streamlit App Demo](Streamli_App.gif)
+![Streamlit App](Streamlit_app.png)
 
 *Real-time emotion detection with confidence scores and probability distribution*
 
 </div>
-
----
 
 ---
 
