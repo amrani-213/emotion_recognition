@@ -147,6 +147,8 @@ Disgust   ██ 550 (1.5%) ⚠️ IMBALANCED
 
 ### 🔄 Architecture Flow
 
+### 🔄 Architecture Flow
+
 ```mermaid
 graph TD
     A[Input 224×224×3] --> B[ResNet Conv1 + BN + ReLU + MaxPool]
@@ -162,13 +164,12 @@ graph TD
     K --> L[Classifier: 512→512→7]
     L --> M[7 Emotion Classes]
     
-    style A fill:#e1f5ff
-    style D fill:#fff4e1
-    style F fill:#fff4e1
-    style H fill:#fff4e1
-    style J fill:#fff4e1
-    style M fill:#e8f5e9
-```
+    style A fill:#667eea,stroke:#764ba2,stroke-width:3px,color:#fff
+    style D fill:#f093fb,stroke:#f5576c,stroke-width:2px,color:#fff
+    style F fill:#feca57,stroke:#ff9ff3,stroke-width:2px,color:#000
+    style H fill:#48dbfb,stroke:#0abde3,stroke-width:2px,color:#fff
+    style J fill:#ff6b6b,stroke:#ee5a6f,stroke-width:2px,color:#fff
+    style M fill:#1dd1a1,stroke:#10ac84,stroke-width:3px,color:#fff
 
 <details>
 <summary><b>📖 Click to see detailed layer structure</b></summary>
