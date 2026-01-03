@@ -488,9 +488,11 @@ streamlit run app/emotion_app.py
 
 <div align="center">
 
-<img src="Streamli_App.gif.gif" alt="Streamlit App Demo" width="100%">
+<img src="Streamli_App.gif.gif" alt="Streamlit App Demo" width="800">
 
 *Real-time emotion detection with confidence scores and probability distribution*
+
+
 
 </div>
 
@@ -670,33 +672,12 @@ FOCAL_GAMMA = 2.0
 <details>
 <summary><b>📈 Click to view training history</b></summary>
 
-<div align="center">
-<table>
-<tr>
-<td width="50%">
-📉 Loss Curves
-Afficher l'image
-Training vs Validation Loss over epochs
-</td>
-<td width="50%">
-📈 Accuracy Progression
-Afficher l'image
-Model accuracy improvement during training
-</td>
-</tr>
-<tr>
-<td width="50%">
-🔄 Learning Rate Schedule
-Afficher l'image
-Cosine annealing with warm restarts
-</td>
-<td width="50%">
-📊 Class-wise Performance
-Afficher l'image
-F1-score evolution for each emotion class
-</td>
-</tr>
-</table>
+- **Loss curves** (training vs validation)
+- **Accuracy progression** over epochs
+- **Learning rate schedule** visualization
+- **Class-wise performance** evolution
+
+</details>
 
 ---
 
