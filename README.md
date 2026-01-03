@@ -117,9 +117,9 @@ Global Average Pooling → Classifier → 7 emotions
 ### Overall Performance
 | Metric | Value |
 |--------|-------|
-| **Test Accuracy** | **69.0%** |
+| **Test Accuracy** | **69.0%** | "with TTA"
 | **Validation Accuracy** | **68.1%** |
-| **Training Time** | 21 epochs (~2 hours on RTX 3060) |
+| **Training Time** | 10 epochs (~42 mins on RTX 3060) |
 | **Parameters** | 11.5M |
 
 
@@ -176,7 +176,7 @@ EMOTION-DETECTION/
 ### Setup
 ```bash
 # Clone repository
-git clone https://github.com/amrani-213/emotion_detection.git
+git clone https://github.com/amrani-213/emotion_recognition.git
 cd emotion-recognition
 
 # Create virtual environment
@@ -289,7 +289,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - PyTorch team
 - CBAM paper authors
 - Streamlit for the amazing framework
-- Mehizel Ali
+- https://github.com/AliMehizel/AliMehizel
 - https://github.com/Serhii2009
 ---
 
