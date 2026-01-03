@@ -117,7 +117,7 @@ Global Average Pooling → Classifier → 7 emotions
 ### Overall Performance
 | Metric | Value |
 |--------|-------|
-| **Test Accuracy** | **69.0%** | "with TTA"
+| **Test Accuracy** | **69.0%** (with TTA)| 
 | **Validation Accuracy** | **68.1%** |
 | **Training Time** | 10 epochs (~42 mins on RTX 3060) |
 | **Parameters** | 11.5M |
@@ -298,6 +298,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Questions or suggestions? Feel free to:
 - Open an issue
 - Email me at abdouugk@gmail.com
-- Connect on LinkedIn
-
+- Connect on 
+https://www.linkedin.com/in/amrani-bouabdellah-430169349/
 ---
