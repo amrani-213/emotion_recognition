@@ -484,11 +484,11 @@ streamlit run app/emotion_app.py
 </tr>
 </table>
 
-### 📸 Demo Screenshot
+### 🎬 Live Demo
 
 <div align="center">
 
-![Streamlit App](Streamlit_app.png)
+<img src="Streamli_App.gif" alt="Streamlit App Demo" width="100%">
 
 *Real-time emotion detection with confidence scores and probability distribution*
 
