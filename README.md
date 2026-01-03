@@ -488,11 +488,9 @@ streamlit run app/emotion_app.py
 
 <div align="center">
 
-<img src="Streamli_App.gif.gif" alt="Streamlit App Demo" width="800">
+<img src="Streamli_App.gif" alt="Streamlit App Demo" width="100%" style="max-width: 1000px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
-*Real-time emotion detection with confidence scores and probability distribution*
-
-
+<p><i>Real-time emotion detection with confidence scores and probability distribution</i></p>
 
 </div>
 
@@ -667,17 +665,46 @@ FOCAL_GAMMA = 2.0
 
 </div>
 
-### 📊 Training Curves
+### 📈 Training Curves
 
-<details>
-<summary><b>📈 Click to view training history</b></summary>
+<div align="center">
 
-- **Loss curves** (training vs validation)
-- **Accuracy progression** over epochs
-- **Learning rate schedule** visualization
-- **Class-wise performance** evolution
+<table>
+<tr>
+<td width="50%">
 
-</details>
+#### 📉 Loss Curves
+![Training and Validation Loss](Loss_curve.png)
+*Training vs Validation Loss over epochs*
+
+</td>
+<td width="50%">
+
+#### 📈 Accuracy Progression
+![Accuracy Over Epochs](Accuracy_plot.png)
+*Model accuracy improvement during training*
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+#### 🔄 Learning Rate Schedule
+![Learning Rate](lr_schedule.png)
+*Cosine annealing with warm restarts*
+
+</td>
+<td width="50%">
+
+#### 📊 Class-wise Performance
+![Per-Class Performance](class_f1_scores.png)
+*F1-score evolution for each emotion class*
+
+</td>
+</tr>
+</table>
+
+</div>
 
 ---
 
