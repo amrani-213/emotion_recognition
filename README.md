@@ -276,7 +276,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Amrani Bouabdellah**
 - GitHub: [@amrani-213](https://github.com/yourusername)
 - LinkedIn: [amrani-bouabdellah](https://www.linkedin.com/in/amrani-bouabdellah-430169349/)
 - Email: abdouugk@gmail.com
