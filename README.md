@@ -488,7 +488,7 @@ streamlit run app/emotion_app.py
 
 <div align="center">
 
-<img src="Streamli_App.gif" alt="Streamlit App Demo" width="100%" style="max-width: 1000px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+<img src="Streamli_App.gif.gif" alt="Streamlit App Demo" width="100%" style="max-width: 1000px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
 <p><i>Real-time emotion detection with confidence scores and probability distribution</i></p>
 
